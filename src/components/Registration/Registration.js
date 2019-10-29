@@ -112,6 +112,7 @@ function Registration() {
             <MenuItem value={'Building Charts'}>Building Charts</MenuItem>
             <MenuItem value={'Domo Stories'}>Domo Stories</MenuItem>
             <MenuItem value={'Data Connection'}>Data Connection</MenuItem>
+            <MenuItem value={'Data Manipulation'}>Data Manipulation</MenuItem>
             <MenuItem value={'Magic ETL'}>Magic ETL</MenuItem>
           </Select>
         </FormControl>
