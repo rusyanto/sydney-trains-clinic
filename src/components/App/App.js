@@ -3,6 +3,7 @@ import './App.css';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import domo from 'ryuu.js';
+import domoSwirl from '../../assets/domo_swirl.jpg'
 import Registration from '../Registration';
 
 const theme = createMuiTheme({
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <img src={domoSwirl} alt="Domo Swirl" style={{ borderRadius: 4 }}></img>
       <Registration />
     </ThemeProvider>
   );
