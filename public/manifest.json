@@ -35,6 +35,7 @@
           {"name": "name", "type": "STRING"}, 
           {"name": "email", "type": "STRING"},
           {"name": "userType", "type": "STRING"},
+          {"name": "skillLevel", "type": "STRING"},
           {"name": "interest", "type": "STRING"},
           {"name": "question", "type": "STRING"}
         ]

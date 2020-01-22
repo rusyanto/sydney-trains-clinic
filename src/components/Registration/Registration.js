@@ -26,6 +26,7 @@ function Registration() {
     name: '',
     email: '',
     userType: '',
+    skillLevel: '',
     interest: '',
     question: ''
   });
@@ -49,9 +50,6 @@ function Registration() {
   if (status !== 'submitted') {
     return (
       <form className={classes.container} autoComplete="off" onSubmit={handleSubmit}>
-        <Typography variant="h6" gutterBottom className={classes.formControl}>
-          Domo Clinic Registration
-        </Typography>
         <TextField
           required
           id="input-name"
@@ -94,6 +92,25 @@ function Registration() {
           </Select>
         </FormControl>
         <FormControl variant="outlined" className={classes.formControl} fullWidth>
+          <InputLabel ref={inputLabel} htmlFor="input-skill-level">
+            What do you think is your current skill level with Domo?
+          </InputLabel>
+          <Select
+            value={values.skillLevel}
+            onChange={handleChange('skillLevel')}
+            labelWidth={400}
+            inputProps={{
+              name: 'skillLevel',
+              id: 'input-skill-level'
+            }}
+          >
+            <MenuItem value={'New to Domo'}>New to Domo</MenuItem>
+            <MenuItem value={'Still a bit to learn'}>Still a bit to learn</MenuItem>
+            <MenuItem value={'Intermediate'}>Intermediate</MenuItem>
+            <MenuItem value={'Advanced'}>Advanced</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl variant="outlined" className={classes.formControl} fullWidth>
           <InputLabel ref={inputLabel} htmlFor="input-interest">
             What are you interested in learning about?
           </InputLabel>
@@ -112,8 +129,8 @@ function Registration() {
             <MenuItem value={'Building Charts'}>Building Charts</MenuItem>
             <MenuItem value={'Domo Stories'}>Domo Stories</MenuItem>
             <MenuItem value={'Data Connection'}>Data Connection</MenuItem>
-            <MenuItem value={'Data Manipulation'}>Data Manipulation</MenuItem>
-            <MenuItem value={'Magic ETL'}>Magic ETL</MenuItem>
+            <MenuItem value={'Domo Transformation Tools'}>Domo Transformation Tools (Beast Mode, DataFusion, MySQL, Magic ETL, Advanced Tools)</MenuItem>
+            <MenuItem value={'Data Storytelling'}>Data Storytelling</MenuItem>
           </Select>
         </FormControl>
         <TextField
