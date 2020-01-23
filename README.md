@@ -1,5 +1,3 @@
-## Overview
-
 Domo custom app for Sydney Trains. It's just a simple form with a few questionnaire fields.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -15,6 +13,7 @@ Please follow below steps:
  3. Open the file and remove the `id` value.
  4. From your command line, type `domo login` to login to the instance that you're going to deploy the app.
  5. Cd to the project directory, then type `npm run upload` to publish the app.
+ > **Note:** The next steps are optional, but you'll need them if you are making changes to your local copy
  6. If publish is successful, you should have a `build` directory created.
  7. Find the file `manifest.json` from this directory.
  8. Open the file, copy the `id` value and paste it to the `manifest.json` in `public` directory.
