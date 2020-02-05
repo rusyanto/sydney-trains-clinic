@@ -1,0 +1,48 @@
+{
+  "short_name": "Domo Clinic",
+  "name": "Sydney Trains Domo Clinic",
+  "version": "1.0.0",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "size": {
+    "width": 5,
+    "height": 3
+  },
+  "mapping": [],
+  "collections": [
+    {
+      "name": "ClinicRegistration",
+      "schema": {"columns": [
+          {"name": "name", "type": "STRING"}, 
+          {"name": "email", "type": "STRING"},
+          {"name": "userType", "type": "STRING"},
+          {"name": "skillLevel", "type": "STRING"},
+          {"name": "interest", "type": "STRING"},
+          {"name": "question", "type": "STRING"}
+        ]
+      },
+      "syncEnabled": true
+    }
+  ],
+  "id": "0202d536-d276-4991-8c34-0a89320e3e9e",
+  "proxyId": "7a615df4-22d6-4b55-a7a8-d8827172672b"
+}
