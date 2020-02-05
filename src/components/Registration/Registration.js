@@ -1,10 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -23,16 +19,15 @@ const useStyles = makeStyles(theme => ({
 function Registration() {
   const classes = useStyles();
   const [values, setValues] = React.useState({
-    name: '',
-    email: '',
-    userType: '',
-    skillLevel: '',
-    interest: '',
-    question: ''
+    userId: domo.env.userId,
+    userName: domo.env.userName,
+    userEmail: domo.env.userEmail,
+    dataNeeded: '',
+    purpose: '',
+    whenNeeded: '',
+    submittedAt: new Date().toISOString()
   });
   const [status, setStatus] = React.useState('notSubmitted');
-
-  const inputLabel = React.useRef(null);
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
@@ -40,9 +35,10 @@ function Registration() {
 
   const handleSubmit = event => {
     event.preventDefault();
+    setValues({ ...values, submittedAt: new Date().toISOString() });
 
     setStatus('submitting');
-    domo.post(`/domo/datastores/v1/collections/ClinicRegistration/documents/`, {
+    domo.post(`/domo/datastores/v1/collections/skiiri/documents/`, {
       "content": values
     }).then(data => setStatus('submitted'));
   }
@@ -52,11 +48,13 @@ function Registration() {
       <form className={classes.container} autoComplete="off" onSubmit={handleSubmit}>
         <TextField
           required
-          id="input-name"
-          label="Name"
-          value={values.name}
-          onChange={handleChange('name')}
+          id="input-data-needed"
+          label="Data I need"
+          value={values.dataNeeded}
+          onChange={handleChange('dataNeeded')}
           className={classes.formControl}
+          multiline
+          rows="3"
           fullWidth
           margin="normal"
           variant="outlined"
@@ -64,86 +62,29 @@ function Registration() {
         />
         <TextField
           required
-          id="input-email"
-          label="Email"
-          value={values.email}
-          onChange={handleChange('email')}
-          className={classes.formControl}
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          type="email"
-        />
-        <FormControl variant="outlined" className={classes.formControl} fullWidth>
-          <InputLabel ref={inputLabel} htmlFor="input-user-type">
-            What type of user are you?
-          </InputLabel>
-          <Select
-            value={values.userType}
-            onChange={handleChange('userType')}
-            labelWidth={200}
-            inputProps={{
-              name: 'userType',
-              id: 'input-user-type'
-            }}
-          >
-            <MenuItem value={'Technical User'}>Technical User</MenuItem>
-            <MenuItem value={'Business User'}>Business User</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl variant="outlined" className={classes.formControl} fullWidth>
-          <InputLabel ref={inputLabel} htmlFor="input-skill-level">
-            What do you think is your current skill level with Domo?
-          </InputLabel>
-          <Select
-            value={values.skillLevel}
-            onChange={handleChange('skillLevel')}
-            labelWidth={400}
-            inputProps={{
-              name: 'skillLevel',
-              id: 'input-skill-level'
-            }}
-          >
-            <MenuItem value={'New to Domo'}>New to Domo</MenuItem>
-            <MenuItem value={'Still a bit to learn'}>Still a bit to learn</MenuItem>
-            <MenuItem value={'Intermediate'}>Intermediate</MenuItem>
-            <MenuItem value={'Advanced'}>Advanced</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl variant="outlined" className={classes.formControl} fullWidth>
-          <InputLabel ref={inputLabel} htmlFor="input-interest">
-            What are you interested in learning about?
-          </InputLabel>
-          <Select
-            value={values.interest}
-            onChange={handleChange('interest')}
-            labelWidth={310}
-            inputProps={{
-              name: 'interest',
-              id: 'input-interest'
-            }}
-          >
-            <MenuItem value={'Collaboration'}>Collaboration</MenuItem>
-            <MenuItem value={'Buzz'}>Buzz</MenuItem>
-            <MenuItem value={'Chart Properties'}>Chart Properties</MenuItem>
-            <MenuItem value={'Building Charts'}>Building Charts</MenuItem>
-            <MenuItem value={'Domo Stories'}>Domo Stories</MenuItem>
-            <MenuItem value={'Data Connection'}>Data Connection</MenuItem>
-            <MenuItem value={'Domo Transformation Tools'}>Domo Transformation Tools (Beast Mode, DataFusion, MySQL, Magic ETL, Advanced Tools)</MenuItem>
-            <MenuItem value={'Data Storytelling'}>Data Storytelling</MenuItem>
-          </Select>
-        </FormControl>
-        <TextField
-          id="outlined-multiline-static"
-          label="Do you have any specific questions to be covered during the Q&A?"
-          value={values.question}
-          onChange={handleChange('question')}
+          id="input-purpose"
+          label="To do what?"
+          value={values.purpose}
+          onChange={handleChange('purpose')}
           className={classes.formControl}
           multiline
           rows="3"
+          fullWidth
           margin="normal"
           variant="outlined"
+          type="text"
+        />
+        <TextField
+          required
+          id="input-when-needed"
+          label="When? (e.g. BOP, SIMPL, On-the-go...)"
+          value={values.whenNeeded}
+          onChange={handleChange('whenNeeded')}
+          className={classes.formControl}
           fullWidth
+          margin="normal"
+          variant="outlined"
+          type="text"
         />
         { status !== 'submitting'
           ?
@@ -158,7 +99,7 @@ function Registration() {
   } else {
     return (
       <Typography variant="h5" gutterBottom align='center' style={{marginTop: 75}}>
-        Thank you for registering!
+        Thank you for submitting!
       </Typography>
     );
   }

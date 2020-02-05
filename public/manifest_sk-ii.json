@@ -1,0 +1,49 @@
+{
+  "short_name": "Domo Clinic",
+  "name": "Domo Clinic",
+  "version": "1.0.0",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "size": {
+    "width": 5,
+    "height": 2
+  },
+  "mapping": [],
+  "collections": [
+    {
+      "name": "skiiri",
+      "schema": {"columns": [
+          {"name": "userId", "type": "STRING"},
+          {"name": "userName", "type": "STRING"},
+          {"name": "userEmail", "type": "STRING"},          
+          {"name": "dataNeeded", "type": "STRING"},
+          {"name": "purpose", "type": "STRING"},
+          {"name": "whenNeeded", "type": "STRING"},
+          {"name": "submittedAt", "type": "DATETIME"}
+        ]
+      },
+      "syncEnabled": true
+    }
+  ],
+  "id": "608b95c2-87ad-42bc-856a-0401cec368dc",
+  "proxyId": ""
+}

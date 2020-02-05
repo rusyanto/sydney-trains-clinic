@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
 import domo from 'ryuu.js';
-import domoSwirl from '../../assets/domo_swirl.jpg'
+import skiiri from '../../assets/skiiri.png';
 import Registration from '../Registration';
 
 const theme = createMuiTheme({
@@ -31,14 +32,16 @@ function App() {
     domo.get(`/domo/datastores/v1/collections/`)
       .then(data => {})
       .catch(e => {
-        domo.post(`/domo/datastores/v1/collections`, { "name": "ClinicRegistration" })
+        domo.post(`/domo/datastores/v1/collections`, { "name": "skiiri" })
           .then(data => console.log(data));
       });
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
-      <img src={domoSwirl} alt="Domo Swirl" style={{ borderRadius: 4 }}></img>
+      <Box textAlign="center">
+        <img src={skiiri} alt="SKiiRI"></img>
+      </Box>
       <Registration />
     </ThemeProvider>
   );
